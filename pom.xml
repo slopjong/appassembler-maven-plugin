@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ The MIT License
+  ~
+  ~ Copyright 2005-2011 The Codehaus.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of
+  ~ this software and associated documentation files (the "Software"), to deal in
+  ~ the Software without restriction, including without limitation the rights to
+  ~ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+  ~ of the Software, and to permit persons to whom the Software is furnished to do
+  ~ so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>mojo-parent</artifactId>
+    <version>29</version>
+  </parent>
+  <artifactId>appassembler</artifactId>
+  <packaging>pom</packaging>
+  <groupId>org.codehaus.mojo.appassembler</groupId>
+  <version>1.2.1</version>
+  <name>Appassembler</name>
+  <inceptionYear>2006</inceptionYear>
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.codehaus.org/browse/MAPPASM</url>
+  </issueManagement>
+  <developers>
+    <developer>
+      <id>kristian</id>
+      <name>Kristian Nordal</name>
+      <email>kristian.nordal@gmail.com</email>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>khmarbaise</id>
+      <name>Karl Heinz Marbaise</name>
+      <email>codehaus@soebes.de</email>
+      <timezone>+1</timezone>
+      <organization>SoftwareEntwicklung Beratung Schulung</organization>
+      <organizationUrl>http://www.soebes.de</organizationUrl>
+    </developer>
+    <developer>
+      <id>trygvis</id>
+      <name>Trygve Laugstoel</name>
+      <email>trygvis@inamo.no</email>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>kaare</id>
+      <name>Kaare Nilsen</name>
+      <email>kaare.nilsen@gmail.com</email>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>dantran</id>
+      <name>Dan Tran</name>
+      <email>dantran@gmail.com</email>
+    </developer>
+    <developer>
+      <id>brett</id>
+      <name>Brett Porter</name>
+      <email>brett@apache.org</email>
+    </developer>
+    <developer>
+      <id>david</id>
+      <name>David J. M. Karlsen</name>
+      <email>david@codehaus.org</email>
+      <organization>Codehaus</organization>
+      <organizationUrl>http://www.codehaus.org</organizationUrl>
+      <timezone>+1</timezone>
+      <url>http://www.davidkarlsen.com</url>
+      <roles>
+        <role>Small fixes and changes</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>sherriff</id>
+      <name>Erik Drolshammer</name>
+      <email>erik-dev@fjas.no</email>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>http://svn.codehaus.org/mojo/trunk/mojo/appassembler/LICENSE.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <modules>
+    <module>appassembler-model</module>
+    <module>appassembler-booter</module>
+    <module>appassembler-maven-plugin</module>
+  </modules>
+  <scm>
+    <connection>scm:svn:http://svn.codehaus.org/mojo/tags/appassembler-1.2.1</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/tags/appassembler-1.2.1</developerConnection>
+    <url>http://fisheye.codehaus.org/browse/mojo/tags/appassembler-1.2.1</url>
+  </scm>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-utils</artifactId>
+        <version>1.5.6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-container-default</artifactId>
+        <version>1.0-alpha-9-stable-1</version>
+      </dependency>
+      <dependency>
+        <groupId>stax</groupId>
+        <artifactId>stax-api</artifactId>
+        <version>1.0.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <!-- All the following tags are Mojo specific -->
+        <configuration>
+          <tags>
+            <tag>
+              <name>goal</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>phase</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>requiresDependencyResolution</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>parameter</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>required</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>readonly</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>requiresProject</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>component</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>threadsafe</name>
+              <placement>X</placement>
+            </tag>
+            <tag>
+              <name>todo</name>
+              <placement>X</placement>
+            </tag>
+          </tags>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>aggregate</report>
+              <report>test-aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <tagListOptions>
+            <tagClasses>
+              <tagClass>
+                <displayName>Todo Work</displayName>
+                <tags>
+                  <tag>
+                    <matchString>todo</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                </tags>
+              </tagClass>
+              <tagClass>
+                <displayName>FIXME</displayName>
+                <tags>
+                  <tag>
+                    <matchString>FIXME</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                </tags>
+              </tagClass>
+            </tagClasses>
+          </tagListOptions>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <onlyCurrentVersion>true</onlyCurrentVersion>
+          <sortColumnNames>Type,Key</sortColumnNames>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>jira-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.8</version>
+        <configuration>
+          <headerLocation>${basedir}/LICENSE.txt</headerLocation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>2.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <configuration>
+            <preparationGoals>clean install</preparationGoals>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.10</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-invoker-plugin</artifactId>
+          <version>1.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>2.8</version>
+          <configuration>
+            <headerLocation>${basedir}/LICENSE.txt</headerLocation>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+        </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>maven-3</id>
+      <activation>
+        <file>
+          <!-- This employs that the basedir expression is only
+               recognized by Maven 3.x (see MNG-2363) -->
+          <exists>${basedir}</exists>
+        </file>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-site-plugin</artifactId>
+              <version>3.0</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <version>2.4</version>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+        <plugins>
+          <plugin>
+            <artifactId>maven-site-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-descriptor</id>
+                <goals>
+                  <goal>attach-descriptor</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>
